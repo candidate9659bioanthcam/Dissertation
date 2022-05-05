@@ -6,16 +6,18 @@
  *  Copyright 2013 UC Berkeley. All rights reserved.
  *
  */
-
+#include <iostream>
 #include "mcmc.h"
 #include "MbRandom.h"
 #include "settings.h"
 #include "path.h"
 #include "measure.h"
 #include "param.h"
+#include <numeric>
 
 #include<iomanip>
 #include<fstream>
+#include <string>
 
 mcmc::mcmc(settings& mySettings, MbRandom* r) {
 	random = r;
@@ -23,22 +25,38 @@ mcmc::mcmc(settings& mySettings, MbRandom* r) {
 	sampleFreq = mySettings.get_sampleFreq();
 	num_gen = mySettings.get_num_gen();
 	minUpdate = mySettings.get_grid();
-	if (!mySettings.get_linked()) {
-		no_linked_sites(mySettings);
-	} else {
+	// if (!mySettings.get_linked()) {
+	// 	no_linked_sites(mySettings);
+	// } else {
 		
-	}
+	// }
 }
 
-void mcmc::no_linked_sites(settings& mySettings) {
+
+void mcmc::no_linked_sites2(settings& mySettings) {
+    paramFile.open("results.csv", std::fstream::app);
+    paramFile << "todel"<< std::endl;
+    paramFile.close();
+
+}
+
+std::string mcmc::no_linked_sites(settings& mySettings) {
+
 	//open files
-	std::string paramName = mySettings.get_baseName() + ".param";
-	std::string trajName = mySettings.get_baseName() + ".traj";
-	std::string timeName = mySettings.get_baseName() + ".time";
-	paramFile.open(paramName.c_str());
-	trajFile.open(trajName.c_str());
-	timeFile.open(timeName.c_str());
+	// std::string paramName = mySettings.get_baseName() + ".csv";
+	// std::string trajName = mySettings.get_baseName() + ".traj";
+	// std::string timeName = mySettings.get_baseName() + ".time";
 	
+    //paramFile.open(paramName.c_str());
+    //std::vector<double> alpha_1_vector;
+    //std::vector<double> alpha_2_vector;
+	//trajFile.open(trajName.c_str());
+	// timeFile.open(timeName.c_str());
+	
+
+    std::vector<double> alpha_1_vector;
+    std::vector<double> alpha_2_vector;
+
 	//initialize wfMeasure
 	wfMeasure* curWF = new wfMeasure(random,0);
 	//wfMeasure* oldWF = NULL;
@@ -65,11 +83,11 @@ void mcmc::no_linked_sites(settings& mySettings) {
     if (!mySettings.get_infer_age()) {
         start = new start_freq(curPath->get_traj(0),random,curParamPath);
     } else {
-        std::cout << "Proposing first allele age" << std::endl;
+        //std::cout << "Proposing first allele age" << std::endl;
         double firstAge = curPath->get_time(0);
-        std::cout << "firstAge is " << firstAge << std::endl;
+        //std::cout << "firstAge is " << firstAge << std::endl;
         age = new param_age(firstAge, random, curParamPath, mySettings.get_dt(), mySettings.get_grid());
-        std::cout << "First allele age is " << age->get() << std::endl;
+        //std::cout << "First allele age is " << age->get() << std::endl;
         curPath->set_update_begin(0);
         curPath->set_old_index(-1);
     }
@@ -92,7 +110,7 @@ void mcmc::no_linked_sites(settings& mySettings) {
     for (int i = 0; i < sample_time_vec.size()-1; i++) {
         if (sample_time_vec[i]->get_oldest() < sample_time_vec[i]->get_youngest()) {
             if (!mySettings.get_infer_age()) {
-                std::cout << "ERROR: Cannot have uncertain times without inferring allele age. Will be fixed in the future" << std::endl;
+                //std::cout << "ERROR: Cannot have uncertain times without inferring allele age. Will be fixed in the future" << std::endl;
                 exit(1);
             }
             sample_time_vec[i]->set_path(curParamPath);
@@ -104,7 +122,7 @@ void mcmc::no_linked_sites(settings& mySettings) {
 
     
     //prepare output file
-    prepareOutput(mySettings.get_infer_age(), time_idx);
+    //prepareOutput(mySettings.get_infer_age(), time_idx);
     
 	//initialize the proposal ratios
 	//probably move this somewhere else
@@ -140,7 +158,7 @@ void mcmc::no_linked_sites(settings& mySettings) {
     if (doAscertain) {
         double ssModern = sample_time_vec[sample_time_vec.size()-1]->get_ss();
         minCount = ceil(mySettings.get_min_freq()*ssModern);
-        std::cout << "Modeling ascertainment, assuming at least " << minCount << " copies of the derived allele at present and derived allele found in at least one ancient sample" << std::endl;
+        //std::cout << "Modeling ascertainment, assuming at least " << minCount << " copies of the derived allele at present and derived allele found in at least one ancient sample" << std::endl;
     }
     
     //clean up
@@ -182,17 +200,17 @@ void mcmc::no_linked_sites(settings& mySettings) {
 		curlnL = compute_lnL_sample_only(curPath);
 		
 		double LLRatio = curlnL-oldlnL;
-        if (curlnL != curlnL || oldlnL != oldlnL) {
-            std::cout << "ERROR: likelihood is nan!" << std::endl;
-            std::cout << "Generation = " << gen << std::endl;
-            std::cout << "Proposal = " << curProp << std::endl;
-            std::cout << "curlnL = " << curlnL << ", oldlnL = " << oldlnL << std::endl;
-            curPath->print();
-            for (int t = 0; t < sample_time_vec.size(); t++) {
-                std::cout << sample_time_vec[t]->get() << std::endl;
-            }
-            exit(1);
-        }
+        // if (curlnL != curlnL || oldlnL != oldlnL) {
+        //     std::cout << "ERROR: likelihood is nan!" << std::endl;
+        //     std::cout << "Generation = " << gen << std::endl;
+        //     std::cout << "Proposal = " << curProp << std::endl;
+        //     std::cout << "curlnL = " << curlnL << ", oldlnL = " << oldlnL << std::endl;
+           // curPath->print();
+            // for (int t = 0; t < sample_time_vec.size(); t++) {
+            //     std::cout << sample_time_vec[t]->get() << std::endl;
+            // }
+          //  exit(1);
+        //}
 		if (curProp == 0 || curProp == 1) {
 			//need to compute LL ratio due to the new alpha...
 			cbpMeasure quickCBP(random);
@@ -201,10 +219,10 @@ void mcmc::no_linked_sites(settings& mySettings) {
 		double mh = LLRatio+propRatio+priorRatio;
 		u = random->uniformRv();
         
-        if (gen % printFreq == 0) {
-            std::cout << gen << " " << curProp;
-            std::cout << std::setprecision(10) <<  " " << oldlnL << " -> " << curlnL << " " << LLRatio << " " << propRatio << " " << priorRatio << " " << mh << " " << log(u) << " ";
-        }
+        // if (gen % printFreq == 0) {
+        //     std::cout << gen << " " << curProp;
+        //     std::cout << std::setprecision(10) <<  " " << oldlnL << " -> " << curlnL << " " << LLRatio << " " << propRatio << " " << priorRatio << " " << mh << " " << log(u) << " ";
+        // }
         
 		if (log(u) < mh) {
 			//accept
@@ -232,9 +250,9 @@ void mcmc::no_linked_sites(settings& mySettings) {
 		}
 	
 		
-        if (gen % printFreq == 0) {
-            std::cout << state << std::endl;
-        }
+        // if (gen % printFreq == 0) {
+        //     std::cout << state << std::endl;
+        // }
 
         
         for (int i = 0; i < sample_time_vec.size(); i++) {
@@ -243,10 +261,10 @@ void mcmc::no_linked_sites(settings& mySettings) {
             if (curIdx != -1) {
                 double curTimePath = curPath->get_time(curIdx);
                 if (curTime != curTimePath && curIdx != -1) {
-                    std::cout << "ERROR: sample time index for time " << i << " is lost!" << std::endl;
-                    std::cout << "curTime = " << curTime << std::endl;
-                    std::cout << "curIdx = " << curIdx << std::endl;
-                    std::cout << "curTimePath = " << curTimePath << std::endl;
+                    // std::cout << "ERROR: sample time index for time " << i << " is lost!" << std::endl;
+                    // std::cout << "curTime = " << curTime << std::endl;
+                    // std::cout << "curIdx = " << curIdx << std::endl;
+                    // std::cout << "curTimePath = " << curTimePath << std::endl;
                     exit(1);
                 }
             }
@@ -268,15 +286,60 @@ void mcmc::no_linked_sites(settings& mySettings) {
         
 		if (gen % sampleFreq == 0) {
             printState();
+            alpha_1_vector.push_back(pars[0]->get());
+            alpha_2_vector.push_back(pars[1]->get());
 		}
 
 	}
-    paramFile.close();
-    trajFile.close();
-    timeFile.close();
+
+
+    
+    //drop first N alements from store vectors
+    int N = 500;
+    alpha_1_vector.erase(alpha_1_vector.begin(), alpha_1_vector.begin() + N);
+    alpha_2_vector.erase(alpha_2_vector.begin(), alpha_2_vector.begin() + N);
+
+    double sum_alpha_1 = std::accumulate(alpha_1_vector.begin(), alpha_1_vector.end(), 0.0);
+    double mean_alpha_1 = sum_alpha_1 / alpha_1_vector.size();
+    
+    double sum_alpha_2 = std::accumulate(alpha_2_vector.begin(), alpha_2_vector.end(), 0.0);
+    double mean_alpha_2 = sum_alpha_2 / alpha_2_vector.size();
+
+    double sq_sum_alpha_1 = std::inner_product(alpha_1_vector.begin(), alpha_1_vector.end(), alpha_1_vector.begin(), 0.0);
+    double stdev_alpha_1 = std::sqrt(sq_sum_alpha_1 / alpha_1_vector.size() - mean_alpha_1 * mean_alpha_1);
+
+    double sq_sum_alpha_2 = std::inner_product(alpha_2_vector.begin(), alpha_2_vector.end(), alpha_2_vector.begin(), 0.0);
+    double stdev_alpha_2 = std::sqrt(sq_sum_alpha_2 / alpha_2_vector.size() - mean_alpha_2 * mean_alpha_2);
+
+    // std::cout << mean_alpha_1 << "," << stdev_alpha_1 << "," << mean_alpha_2 << "," << stdev_alpha_2 << std::endl;
+
+
+    //paramFile.open("results.csv", std::fstream::app);
+    //paramFile << mySettings.get_baseName() << "," <<mean_alpha_1 << "," << stdev_alpha_1 << "," << mean_alpha_2 << "," << stdev_alpha_2 << std::endl;
+    //paramFile.close();
+    return mySettings.get_baseName() + "," + std::to_string(mean_alpha_1) + "," + std::to_string(stdev_alpha_1) + "," + std::to_string(mean_alpha_2) + "," + std::to_string(stdev_alpha_2);
+
+
+    //paramFile << mean_alpha_1 << "," << stdev_alpha_1 << "," << mean_alpha_2 << "," << stdev_alpha_2 << std::endl;
+    //paramFile.close();
+    
+
+//    paramFile.close();
+
+    // std::cout << "\nOutput of alpha_1: ";
+    // for (auto i = alpha_1_vector.cbegin(); i != alpha_1_vector.cend(); ++i)
+    //     std::cout << *i << " ";
+    // std::cout << "\nOutput of alpha_2: ";
+    // for (auto i = alpha_2_vector.cbegin(); i != alpha_2_vector.cend(); ++i)
+    //     std::cout << *i << " ";
+    // //trajFile.close();
+    //timeFile.close();
    
 
 }
+
+
+
 
 //for now, this computes the lnL of the WHOLE PATH (wrt Wiener measure) and SAMPLES
 //could be optimized to only care about updated portions of path?
@@ -290,9 +353,9 @@ double mcmc::compute_lnL(wfSamplePath* p, measure* m, wienerMeasure* wm) {
 	}
 	
 	if (gir != gir) {
-		std::cout << "Likelihood is nan at generation " << gen << ". Proposal " << curProp << std::endl;
-		p->print_traj(std::cout);
-		p->print_time(std::cout);
+		//std::cout << "Likelihood is nan at generation " << gen << ". Proposal " << curProp << std::endl;
+		//p->print_traj(std::cout);
+		//p->print_time(std::cout);
 		exit(1);
 	}
 	return gir + sample_prob;
@@ -323,8 +386,8 @@ double mcmc::ascertain(wfSamplePath* p) {
 }
 
 void mcmc::prepareOutput(bool infer_age, std::vector<int> time_idx) {
-    paramFile << "gen\tlnL\tpathlnL\talpha1\talpha2\tF";
-    if (infer_age) {
+    //paramFile << "alpha1_mean,alpha1_std, alpha2_mean, alpha2_std";
+    /*if (infer_age) {
         paramFile << "\tage";
     } else {
         paramFile << "\tstart_freq";
@@ -334,21 +397,29 @@ void mcmc::prepareOutput(bool infer_age, std::vector<int> time_idx) {
         paramFile << "\tsample_time_" << time_idx[i];
     }
     paramFile << "\tfirst_nonzero";
-    paramFile << std::endl;
+    */
+    //paramFile << std::endl;
 }
 
 void mcmc::printState() {
     cbpMeasure testCBP(random);
-    double pathlnL = testCBP.log_girsanov_wf_r(curPath, pars[0]->get(), pars[1]->get(), curPath->get_pop(), 0);
-    paramFile << gen << "\t" << curlnL << "\t" << pathlnL;
-    for (int i = 0; i < pars.size()-1; i++) {
-        paramFile << "\t" << pars[i]->get();
-    }
-    paramFile << "\t" << curPath->get_firstNonzero();
-    paramFile << std::endl;
-    trajFile << gen << " ";
-    curPath->print_traj(trajFile << std::setprecision(20));
-    timeFile << gen << " ";
-    curPath->print_time(timeFile << std::setprecision(20));
-}
+    
+    
+    //double pathlnL = testCBP.log_girsanov_wf_r(curPath, pars[0]->get(), pars[1]->get(), curPath->get_pop(), 0);
+    //paramFile << gen << "\t" << curlnL << "\t" << pathlnL;
+    //paramFile << pars[0]->get() << "," << pars[1]->get();
+    
+    // alpha_1_vector.push_back(pars[0]->get());
+    // alpha_2_vector.push_back(pars[1]->get());
 
+    //paramFile << "\t" << pars[1]->get();
+    //for (int i = 0; i < pars.size()-1; i++) {
+    //    paramFile << "\t" << pars[i]->get();
+    //}
+    //paramFile << "\t" << curPath->get_firstNonzero();
+    //paramFile << std::endl;
+    //trajFile << gen << " ";
+    //curPath->print_traj(trajFile << std::setprecision(20));
+    //timeFile << gen << " ";
+    //curPath->print_time(timeFile << std::setprecision(20));
+}
