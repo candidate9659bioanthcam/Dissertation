@@ -1,0 +1,299 @@
+cd C:\\Users\ACER\Desktop\Undergraduate dissertation\v44.3_1240K_public
+--file iberian_cline0 --indep 50 5 1.5 --out iber_pruned
+
+plink --bfile iberian_cline0 --recode --out iberian_cline0
+plink --file iberian_cline0 --recode  --transpose
+plink --bfile iberian_cline0 --freq --out iberian_cline0 --keep-allele-order
+
+plink --bfile iberian_cline500 --recode --out iberian_cline500
+plink --file iberian_cline500 --recode  --transpose
+plink --bfile iberian_cline500 --freq --out iberian_cline500 --keep-allele-order
+
+plink --bfile iberian_cline1000 --recode --out iberian_cline1000
+plink --file iberian_cline1000 --recode  --transpose
+plink --bfile iberian_cline1000 --freq --out iberian_cline1000 --keep-allele-order
+
+plink --bfile iberian_cline1500 --recode --out iberian_cline1500
+plink --file iberian_cline1500 --recode  --transpose
+plink --bfile iberian_cline1500 --freq --out iberian_cline1500 --keep-allele-order
+
+plink --bfile iberian_cline2000 --recode --out iberian_cline2000
+plink --file iberian_cline2000 --recode  --transpose
+plink --bfile iberian_cline2000 --freq --out iberian_cline2000 --keep-allele-order
+
+plink --bfile iberian_cline2500 --recode --out iberian_cline2500
+plink --file iberian_cline2500 --recode  --transpose
+plink --bfile iberian_cline2500 --freq --out iberian_cline2500 --keep-allele-order
+
+plink --bfile iberian_cline3000 --recode --out iberian_cline3000
+plink --file iberian_cline3000 --recode  --transpose
+plink --bfile iberian_cline3000 --freq --out iberian_cline3000 --keep-allele-order
+
+plink --bfile iberian_cline3500 --recode --out iberian_cline3500
+plink --file iberian_cline3500 --recode  --transpose
+plink --bfile iberian_cline3500 --freq --out iberian_cline3500 --keep-allele-order
+
+plink --bfile iberian_cline4000 --recode --out iberian_cline4000
+plink --file iberian_cline4000 --recode  --transpose
+plink --bfile iberian_cline4000 --freq --out iberian_cline4000 --keep-allele-order
+
+plink --bfile iberian_cline4500 --recode --out iberian_cline4500
+plink --file iberian_cline4500 --recode  --transpose
+plink --bfile iberian_cline4500 --freq --out iberian_cline4500 --keep-allele-order
+
+plink --bfile iberian_cline5000 --recode --out iberian_cline5000
+plink --file iberian_cline5000 --recode  --transpose
+plink --bfile iberian_cline5000 --freq --out iberian_cline5000 --keep-allele-order
+
+plink --bfile iberian_cline5500 --recode --out iberian_cline5500
+plink --file iberian_cline5500 --recode  --transpose
+plink --bfile iberian_cline5500 --freq --out iberian_cline5500 --keep-allele-order
+
+plink --bfile iberian_cline6000 --recode --out iberian_cline6000
+plink --file iberian_cline6000 --recode  --transpose
+plink --bfile iberian_cline6000 --freq --out iberian_cline6000 --keep-allele-order
+
+plink --bfile iberian_cline6500 --recode --out iberian_cline6500
+plink --file iberian_cline6500 --recode  --transpose
+plink --bfile iberian_cline6500 --freq --out iberian_cline6500 --keep-allele-order
+
+
+
+#################################################################
+cd C:\\Users\ACER\Desktop\Undergraduate dissertation\v44.3_1240K_public
+
+plink --bfile steppe_cline0 --recode --out steppe_cline0
+plink --file steppe_cline0 --recode  --transpose
+plink --bfile steppe_cline0 --freq --out steppe_cline0 --keep-allele-order
+
+plink --bfile steppe_cline500 --recode --out steppe_cline500
+plink --file steppe_cline500 --recode  --transpose
+plink --bfile steppe_cline500 --freq --out steppe_cline500 --keep-allele-order
+
+plink --bfile steppe_cline1000 --recode --out steppe_cline1000
+plink --file steppe_cline1000 --recode  --transpose
+plink --bfile steppe_cline1000 --freq --out steppe_cline1000 --keep-allele-order
+
+plink --bfile steppe_cline1500 --recode --out steppe_cline1500
+plink --file steppe_cline1500 --recode  --transpose
+plink --bfile steppe_cline1500 --freq --out steppe_cline1500 --keep-allele-order
+
+plink --bfile steppe_cline2000 --recode --out steppe_cline2000
+plink --file steppe_cline2000 --recode  --transpose
+plink --bfile steppe_cline2000 --freq --out steppe_cline2000 --keep-allele-order
+
+plink --bfile steppe_cline2500 --recode --out steppe_cline2500
+plink --file steppe_cline2500 --recode  --transpose
+plink --bfile steppe_cline2500 --freq --out steppe_cline2500 --keep-allele-order
+
+plink --bfile steppe_cline3000 --recode --out steppe_cline3000
+plink --file steppe_cline3000 --recode  --transpose
+plink --bfile steppe_cline3000 --freq --out steppe_cline3000 --keep-allele-order
+
+plink --bfile steppe_cline3500 --recode --out steppe_cline3500
+plink --file steppe_cline3500 --recode  --transpose
+plink --bfile steppe_cline3500 --freq --out steppe_cline3500 --keep-allele-order
+
+plink --bfile steppe_cline4000 --recode --out steppe_cline4000
+plink --file steppe_cline4000 --recode  --transpose
+plink --bfile steppe_cline4000 --freq --out steppe_cline4000 --keep-allele-order
+
+plink --bfile steppe_cline4500 --recode --out steppe_cline4500
+plink --file steppe_cline4500 --recode  --transpose
+plink --bfile steppe_cline4500 --freq --out steppe_cline4500 --keep-allele-order
+
+plink --bfile steppe_cline5000 --recode --out steppe_cline5000
+plink --file steppe_cline5000 --recode  --transpose
+plink --bfile steppe_cline5000 --freq --out steppe_cline5000 --keep-allele-order
+
+plink --bfile steppe_cline5500 --recode --out steppe_cline5500
+plink --file steppe_cline5500 --recode  --transpose
+plink --bfile steppe_cline5500 --freq --out steppe_cline5500 --keep-allele-order
+
+plink --bfile steppe_cline6000 --recode --out steppe_cline6000
+plink --file steppe_cline6000 --recode  --transpose
+plink --bfile steppe_cline6000 --freq --out steppe_cline6000 --keep-allele-order
+
+plink --bfile steppe_cline6500 --recode --out steppe_cline6500
+plink --file steppe_cline6500 --recode  --transpose
+plink --bfile steppe_cline6500 --freq --out steppe_cline6500 --keep-allele-order
+
+
+#####################################################################
+cd C:\\Users\ACER\Desktop\Undergraduate dissertation\v44.3_1240K_public
+
+plink --bfile andes_cline0 --recode --out andes_cline0
+plink --file andes_cline0 --recode  --transpose
+plink --bfile andes_cline0 --freq --out andes_cline0 --keep-allele-order
+
+plink --bfile andes_cline500 --recode --out andes_cline500
+plink --file andes_cline500 --recode  --transpose
+plink --bfile andes_cline500 --freq --out andes_cline500 --keep-allele-order
+
+plink --bfile andes_cline1000 --recode --out andes_cline1000
+plink --file andes_cline1000 --recode  --transpose
+plink --bfile andes_cline1000 --freq --out andes_cline1000 --keep-allele-order
+
+plink --bfile andes_cline1500 --recode --out andes_cline1500
+plink --file andes_cline1500 --recode  --transpose
+plink --bfile andes_cline1500 --freq --out andes_cline1500 --keep-allele-order
+
+plink --bfile andes_cline2000 --recode --out andes_cline2000
+plink --file andes_cline2000 --recode  --transpose
+plink --bfile andes_cline2000 --freq --out andes_cline2000 --keep-allele-order
+
+plink --bfile andes_cline2500 --recode --out andes_cline2500
+plink --file andes_cline2500 --recode  --transpose
+plink --bfile andes_cline2500 --freq --out andes_cline2500 --keep-allele-order
+
+plink --bfile andes_cline3000 --recode --out andes_cline3000
+plink --file andes_cline3000 --recode  --transpose
+plink --bfile andes_cline3000 --freq --out andes_cline3000 --keep-allele-order
+
+plink --bfile andes_cline3500 --recode --out andes_cline3500
+plink --file andes_cline3500 --recode  --transpose
+plink --bfile andes_cline3500 --freq --out andes_cline3500 --keep-allele-order
+
+plink --bfile andes_cline4000 --recode --out andes_cline4000
+plink --file andes_cline4000 --recode  --transpose
+plink --bfile andes_cline4000 --freq --out andes_cline4000 --keep-allele-order
+
+plink --bfile andes_cline4500 --recode --out andes_cline4500
+plink --file andes_cline4500 --recode  --transpose
+plink --bfile andes_cline4500 --freq --out andes_cline4500 --keep-allele-order
+
+plink --bfile andes_cline5000 --recode --out andes_cline5000
+plink --file andes_cline5000 --recode  --transpose
+plink --bfile andes_cline5000 --freq --out andes_cline5000 --keep-allele-order
+
+plink --bfile andes_cline5500 --recode --out andes_cline5500
+plink --file andes_cline5500 --recode  --transpose
+plink --bfile andes_cline5500 --freq --out andes_cline5500 --keep-allele-order
+
+plink --bfile andes_cline6000 --recode --out andes_cline6000
+plink --file andes_cline6000 --recode  --transpose
+plink --bfile andes_cline6000 --freq --out andes_cline6000 --keep-allele-order
+
+plink --bfile andes_cline6500 --recode --out andes_cline6500
+plink --file andes_cline6500 --recode  --transpose
+plink --bfile andes_cline6500 --freq --out andes_cline6500 --keep-allele-order
+
+############################################################
+
+cd C:\\Users\ACER\Desktop\Undergraduate dissertation\v44.3_1240K_public
+
+plink --bfile eafrica_cline0 --recode --out eafrica_cline0
+plink --file eafrica_cline0 --recode  --transpose
+plink --bfile eafrica_cline0 --freq --out eafrica_cline0 --keep-allele-order
+
+plink --bfile eafrica_cline500 --recode --out eafrica_cline500
+plink --file eafrica_cline500 --recode  --transpose
+plink --bfile eafrica_cline500 --freq --out eafrica_cline500 --keep-allele-order
+
+plink --bfile eafrica_cline1000 --recode --out eafrica_cline1000
+plink --file eafrica_cline1000 --recode  --transpose
+plink --bfile eafrica_cline1000 --freq --out eafrica_cline1000 --keep-allele-order
+
+plink --bfile eafrica_cline1500 --recode --out eafrica_cline1500
+plink --file eafrica_cline1500 --recode  --transpose
+plink --bfile eafrica_cline1500 --freq --out eafrica_cline1500 --keep-allele-order
+
+plink --bfile eafrica_cline2000 --recode --out eafrica_cline2000
+plink --file eafrica_cline2000 --recode  --transpose
+plink --bfile eafrica_cline2000 --freq --out eafrica_cline2000 --keep-allele-order
+
+plink --bfile eafrica_cline2500 --recode --out eafrica_cline2500
+plink --file eafrica_cline2500 --recode  --transpose
+plink --bfile eafrica_cline2500 --freq --out eafrica_cline2500 --keep-allele-order
+
+plink --bfile eafrica_cline3000 --recode --out eafrica_cline3000
+plink --file eafrica_cline3000 --recode  --transpose
+plink --bfile eafrica_cline3000 --freq --out eafrica_cline3000 --keep-allele-order
+
+plink --bfile eafrica_cline3500 --recode --out eafrica_cline3500
+plink --file eafrica_cline3500 --recode  --transpose
+plink --bfile eafrica_cline3500 --freq --out eafrica_cline3500 --keep-allele-order
+
+plink --bfile eafrica_cline4000 --recode --out eafrica_cline4000
+plink --file eafrica_cline4000 --recode  --transpose
+plink --bfile eafrica_cline4000 --freq --out eafrica_cline4000 --keep-allele-order
+
+plink --bfile eafrica_cline4500 --recode --out eafrica_cline4500
+plink --file eafrica_cline4500 --recode  --transpose
+plink --bfile eafrica_cline4500 --freq --out eafrica_cline4500 --keep-allele-order
+
+plink --bfile eafrica_cline5000 --recode --out eafrica_cline5000
+plink --file eafrica_cline5000 --recode  --transpose
+plink --bfile eafrica_cline5000 --freq --out eafrica_cline5000 --keep-allele-order
+
+plink --bfile eafrica_cline5500 --recode --out eafrica_cline5500
+plink --file eafrica_cline5500 --recode  --transpose
+plink --bfile eafrica_cline5500 --freq --out eafrica_cline5500 --keep-allele-order
+
+plink --bfile eafrica_cline6000 --recode --out eafrica_cline6000
+plink --file eafrica_cline6000 --recode  --transpose
+plink --bfile eafrica_cline6000 --freq --out eafrica_cline6000 --keep-allele-order
+
+plink --bfile eafrica_cline6500 --recode --out eafrica_cline6500
+plink --file eafrica_cline6500 --recode  --transpose
+plink --bfile eafrica_cline6500 --freq --out eafrica_cline6500 --keep-allele-order
+
+###################################################3
+cd C:\\Users\ACER\Desktop\Undergraduate dissertation\v44.3_1240K_public
+
+plink --bfile seasia_cline0 --recode --out seasia_cline0
+plink --file seasia_cline0 --recode  --transpose
+plink --bfile seasia_cline0 --freq --out seasia_cline0 --keep-allele-order
+
+plink --bfile seasia_cline500 --recode --out seasia_cline500
+plink --file seasia_cline500 --recode  --transpose
+plink --bfile seasia_cline500 --freq --out seasia_cline500 --keep-allele-order
+
+plink --bfile seasia_cline1000 --recode --out seasia_cline1000
+plink --file seasia_cline1000 --recode  --transpose
+plink --bfile seasia_cline1000 --freq --out seasia_cline1000 --keep-allele-order
+
+plink --bfile seasia_cline1500 --recode --out seasia_cline1500
+plink --file seasia_cline1500 --recode  --transpose
+plink --bfile seasia_cline1500 --freq --out seasia_cline1500 --keep-allele-order
+
+plink --bfile seasia_cline2000 --recode --out seasia_cline2000
+plink --file seasia_cline2000 --recode  --transpose
+plink --bfile seasia_cline2000 --freq --out seasia_cline2000 --keep-allele-order
+
+plink --bfile seasia_cline2500 --recode --out seasia_cline2500
+plink --file seasia_cline2500 --recode  --transpose
+plink --bfile seasia_cline2500 --freq --out seasia_cline2500 --keep-allele-order
+
+plink --bfile seasia_cline3000 --recode --out seasia_cline3000
+plink --file seasia_cline3000 --recode  --transpose
+plink --bfile seasia_cline3000 --freq --out seasia_cline3000 --keep-allele-order
+
+plink --bfile seasia_cline3500 --recode --out seasia_cline3500
+plink --file seasia_cline3500 --recode  --transpose
+plink --bfile seasia_cline3500 --freq --out seasia_cline3500 --keep-allele-order
+
+plink --bfile seasia_cline4000 --recode --out seasia_cline4000
+plink --file seasia_cline4000 --recode  --transpose
+plink --bfile seasia_cline4000 --freq --out seasia_cline4000 --keep-allele-order
+
+plink --bfile seasia_cline4500 --recode --out seasia_cline4500
+plink --file seasia_cline4500 --recode  --transpose
+plink --bfile seasia_cline4500 --freq --out seasia_cline4500 --keep-allele-order
+
+plink --bfile seasia_cline5000 --recode --out seasia_cline5000
+plink --file seasia_cline5000 --recode  --transpose
+plink --bfile seasia_cline5000 --freq --out seasia_cline5000 --keep-allele-order
+
+plink --bfile seasia_cline5500 --recode --out seasia_cline5500
+plink --file seasia_cline5500 --recode  --transpose
+plink --bfile seasia_cline5500 --freq --out seasia_cline5500 --keep-allele-order
+
+plink --bfile seasia_cline6000 --recode --out seasia_cline6000
+plink --file seasia_cline6000 --recode  --transpose
+plink --bfile seasia_cline6000 --freq --out seasia_cline6000 --keep-allele-order
+
+plink --bfile seasia_cline6500 --recode --out seasia_cline6500
+plink --file seasia_cline6500 --recode  --transpose
+plink --bfile seasia_cline6500 --freq --out seasia_cline6500 --keep-allele-order
+
