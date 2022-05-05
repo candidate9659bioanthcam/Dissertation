@@ -1,7 +1,5 @@
 ### 1. Initial data manipulation ###
 
-setwd("C:/Users/ACER/Desktop")
-
 library("readxl")
 library("ggplot2")
 library("dplyr")
@@ -173,8 +171,6 @@ iber6500_ind = unique(iber6500$Version.ID)
 
 ### 3. Conversion to PLINK format ###
 
-setwd("C:/Users/ACER/Desktop/Undergraduate dissertation/v44.3_1240K_public")
-
 packedancestrymap_to_plink(
   inpref = "v44.3_1240K_public",
   outpref = "iberian_cline0",
@@ -273,8 +269,7 @@ packedancestrymap_to_plink(
   pops = NULL,
   verbose = TRUE)
 
-# See PLINK_commands.txt for PLINK workflow.
-
+# See 6615Q_PLINK_conversion.txt for PLINK workflow.
 
 
 ### 4. Generating inputs for Schreiber's algorithm ###
@@ -613,7 +608,6 @@ colnames(iber_input) <- c("CHR", "SNP", "Count6000", "N6000","Count5500", "N5500
                      "Count2000", "N2000","Count1500", "N1500","Count1000", "N1000",
                      "Count500", "N500", "Count0", "N0")
 
-setwd("C:/Users/ACER/Desktop/Undergraduate dissertation/Inputs/non_pruned")
 iber_input = as.data.table(iber_input)
 fwrite(iber_input, "iber_non_pruned.csv")
 iber_non_pruned = read.csv(file = "iber_non_pruned.csv")
@@ -623,10 +617,8 @@ iber_chr6 = iber_chr6[iber_chr6$SNP %in% iber_pruned$V1,]
 
 # Pruning (from output file generated with PLINK LD pruning function)
 
-setwd("C:/Users/ACER/Desktop/Undergraduate dissertation/v44.3_1240K_public")
 iber_pruned = read.delim("iber_pruned.prune.in", header = FALSE)
 iber_input = iber_non_pruned[iber_non_pruned$SNP %in% iber_pruned$V1,]
-setwd("C:/Users/ACER/Desktop")
 
 fwrite(iber_input, "iber_pruned_input.csv")
 iber_input = read.csv(file = "iber_input.csv")
@@ -705,7 +697,6 @@ sample_bins = function(i) {
 
 ### Create sets of SNPs
 
-setwd("C:/Users/ACER/Desktop/Undergraduate dissertation/v44.3_1240K_public")
 snp_position = read.table("v44.3_1240K_public.snp")
 
 HLA_pos = subset(snp_position, V4 >= 29677984 & 33485635 >= V4)
@@ -730,6 +721,6 @@ sel_SNPs = c("rs4988235", "rs1426654", "rs3827760", "rs17822931", "rs1871534",
 candidate_SNPs = subset(count, SNP %in% sel_SNPs)
 
 
-### Output analysis ###
+### See the respective files for each cline for output analysis ###
 
 
