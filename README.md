@@ -1,5 +1,5 @@
 # Note from candidate 9659
-This repository relies heavily on the work of Schraiber et al. 2016 (https://github.com/Schraiber/selection). Apart from the files with a file name starting with 9659, also mcmc.cpp and main.cpp were slightly modified for the purpose of paralellizing the algorithm. Nevertheless, the basic rules for the files and installation remain as in the original paper. The main change is that the algorithm should be started with tmp.py instead of .sr.  
+This repository relies heavily on the work of Schraiber et al. 2016 (https://github.com/Schraiber/selection). Apart from the files with a file name starting with 9659, also mcmc.cpp and main.cpp were slightly modified for the purpose of paralellizing the algorithm. Nevertheless, the basic rules for the files and installation remain as in the original paper. The main change is that the algorithm should be started with tmp.py instead of .sr. The following README file is entirely work of Schraiber et al. 2016.
 
 ## Installation
 
